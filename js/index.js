@@ -16,18 +16,27 @@ const main = async () => {
         artifacts: mainArtifacts 
     } = await generateProof(compiledMain, { x: 1, y: 2, z: 3 });
     log('Main proof and recursive artifacts generated');
+    console.log(mainPublicInputs);
 
     log('Generating recursive proof 1...')
-    const { proof: rec1Proof, artifacts: rec1Artifacts} = await generateRecursiveProof(compiledRec1, mainPublicInputs, mainArtifacts, { c: 3 });
+    const { proof: rec1Proof, artifacts: rec1Artifacts, publicInputs: recPublicInputs} = await generateRecursiveProof(compiledRec1, mainPublicInputs, mainArtifacts, { c: 3 });
     log('Recursive proof 1 generated');
 
+    console.log(recPublicInputs)
+
     log('Generating recursive proof 2...')
-    const { proof: rec2Proof, artifacts: rec2Artifacts, publicInputs: rec2PublicInputs} = await generateRecursiveProof(compiledRec2, mainPublicInputs, mainArtifacts, { d: 4 });
+    const { proof: rec2Proof, artifacts: rec2Artifacts, publicInputs: rec2PublicInputs} = await generateRecursiveProof(compiledRec2, recPublicInputs, rec1Artifacts, { d: 4 });
     log('Recursive proof 2 generated');
     
     console.log(rec2PublicInputs);
 
-    const res = await verifyProof(compiledRec2, rec2Proof, rec2PublicInputs);
+    log('Generating recursive proof 3...')
+    const { proof: rec3Proof, artifacts: rec3Artifacts, publicInputs: rec3PublicInputs} = await generateRecursiveProof(compiledRec2, rec2PublicInputs, rec2Artifacts, { d: 4 });
+    log('Recursive proof 3 generated');
+    
+    console.log(rec3PublicInputs);
+
+    const res = await verifyProof(compiledRec2, rec3Proof, rec3PublicInputs);
     console.log(res);
 }
 
