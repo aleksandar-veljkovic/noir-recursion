@@ -3,10 +3,10 @@ use dep::std;
 fn main(
     verification_key : [Field; 114], 
     proof : [Field; 93], 
-    public_inputs : [Field; 17], 
+    public_inputs : [Field; 34], 
     key_hash : Field,
-    d: Field
-) -> pub Field {
+    d: pub Field
+) -> pub [Field; 34] {
     std::verify_proof(
         verification_key.as_slice(), 
         proof.as_slice(), 
@@ -14,5 +14,5 @@ fn main(
         key_hash,
     );
 
-    public_inputs[0] + d
+    public_inputs
 }

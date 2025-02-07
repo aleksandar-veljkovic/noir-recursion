@@ -1,4 +1,4 @@
 #[recursive]
-fn main(x : Field, y : Field, z : pub Field) {
-    assert(z == x + y);
+fn main(x : [Field; 16], y : pub Field) -> pub [Field; 16]{
+    x
 }
