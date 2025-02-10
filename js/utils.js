@@ -101,7 +101,7 @@ export const generateRecursiveProof = async (compiledCircuit, proofPublicInputs,
         public_inputs: proofPublicInputs,
         key_hash: vkHash,
     }
-
+    //console.log(recinputs)
     return generateProof(compiledCircuit, recinputs, false);
 }
 
