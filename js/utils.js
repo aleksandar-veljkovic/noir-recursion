@@ -78,7 +78,7 @@ const buildBackendAndWitness = async (compiledCircuit, inputs, recursive = true)
 const _generateProofAndArtifacts = async (backend, witness) => {
     const { publicInputs, proof } = await backend.generateProof(witness);
     const artifacts = await backend.generateRecursiveProofArtifacts({ proof, publicInputs }, publicInputs.length);
-
+    await backend.destroy();
     return { publicInputs, proof, artifacts };
 }
 
@@ -87,6 +87,7 @@ const _generateProofAndArtifacts = async (backend, witness) => {
  */
 export const generateProof = async (compiledCircuit, inputs) => {
     const { backend, witness } = await buildBackendAndWitness(compiledCircuit, inputs);
+    await backend.destroy(); // Uništi backend nakon verifikacije
     return _generateProofAndArtifacts(backend, witness);
 }
 
@@ -107,5 +108,6 @@ export const generateRecursiveProof = async (compiledCircuit, proofPublicInputs,
 export const verifyProof = async(compiledCircuit, proof, publicInputs) => {
     const { backend } = buildBackend(compiledCircuit, true);
     const res = await backend.verifyProof({ proof, publicInputs });
+    await backend.destroy(); // Uništi backend nakon verifikacije
     return res;
 }
