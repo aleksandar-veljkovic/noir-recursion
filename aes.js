@@ -195,6 +195,203 @@ async function aes() {
         data_json = await readResult('./aes_recursion/recursion.json');
         public_inputs = [data_json.i, ...data_json.return];
         console.log(public_inputs);
+        //radi
+        circuit = await getCircuit('aes_recursion');
+        backend = new BarretenbergBackend(circuit, { threads: 8 });
+
+        try {
+            const data = fs.readFileSync('./aes_recursion/proofs/aes_recursion.proof', 'utf8');
+            const chunks = [];
+            const chunkSize = 64;
+            for (let i = 0; i < 16; i++) {
+                const chunk = data.slice(i * chunkSize, (i + 1) * chunkSize);
+                if (chunk.length === chunkSize) {
+                    public_inputs.push(`0x${chunk}`);
+                }
+            }
+
+            const remaining = data.slice(16 * chunkSize);
+            const hexArray = remaining.match(/.{1,2}/g);
+            uint8Array = new Uint8Array(hexArray.map(h => parseInt(h, 16)));
+        } catch (err) {
+            console.error("Greška pri čitanju fajla:", err);
+            return;
+        }
+
+        console.log(public_inputs)
+        console.log("Pokrecem aes_recursion.sh...");
+        RecProofArtifacts = await backend.generateRecursiveProofArtifacts(
+            { publicInputs: public_inputs, proof: uint8Array },
+            public_inputs.length
+        );
+
+        await backend.destroy();
+        console.log(public_inputs)
+        console.log(RecProofArtifacts)
+        let { stdout: stdout6 } = await execFileAsync('./aes_recursion.sh', [JSON.stringify(RecProofArtifacts), public_inputs, i]);
+        i++;
+        console.log(`Izlaz aes_recursion.sh:\n${stdout6}`);
+
+        data_json = await readResult('./aes_recursion/recursion.json');
+        public_inputs = [data_json.i, ...data_json.return];
+        console.log(public_inputs);
+        //
+        circuit = await getCircuit('aes_recursion');
+        backend = new BarretenbergBackend(circuit, { threads: 8 });
+
+        try {
+            const data = fs.readFileSync('./aes_recursion/proofs/aes_recursion.proof', 'utf8');
+            const chunks = [];
+            const chunkSize = 64;
+            for (let i = 0; i < 16; i++) {
+                const chunk = data.slice(i * chunkSize, (i + 1) * chunkSize);
+                if (chunk.length === chunkSize) {
+                    public_inputs.push(`0x${chunk}`);
+                }
+            }
+
+            const remaining = data.slice(16 * chunkSize);
+            const hexArray = remaining.match(/.{1,2}/g);
+            uint8Array = new Uint8Array(hexArray.map(h => parseInt(h, 16)));
+        } catch (err) {
+            console.error("Greška pri čitanju fajla:", err);
+            return;
+        }
+
+        console.log(public_inputs)
+        console.log("Pokrecem aes_recursion.sh...");
+        RecProofArtifacts = await backend.generateRecursiveProofArtifacts(
+            { publicInputs: public_inputs, proof: uint8Array },
+            public_inputs.length
+        );
+
+        await backend.destroy();
+        console.log(public_inputs)
+        console.log(RecProofArtifacts)
+        let { stdout: stdout7 } = await execFileAsync('./aes_recursion.sh', [JSON.stringify(RecProofArtifacts), public_inputs, i]);
+        i++;
+        console.log(`Izlaz aes_recursion.sh:\n${stdout7}`);
+
+        data_json = await readResult('./aes_recursion/recursion.json');
+        public_inputs = [data_json.i, ...data_json.return];
+        console.log(public_inputs);
+        //
+        circuit = await getCircuit('aes_recursion');
+        backend = new BarretenbergBackend(circuit, { threads: 8 });
+
+        try {
+            const data = fs.readFileSync('./aes_recursion/proofs/aes_recursion.proof', 'utf8');
+            const chunks = [];
+            const chunkSize = 64;
+            for (let i = 0; i < 16; i++) {
+                const chunk = data.slice(i * chunkSize, (i + 1) * chunkSize);
+                if (chunk.length === chunkSize) {
+                    public_inputs.push(`0x${chunk}`);
+                }
+            }
+
+            const remaining = data.slice(16 * chunkSize);
+            const hexArray = remaining.match(/.{1,2}/g);
+            uint8Array = new Uint8Array(hexArray.map(h => parseInt(h, 16)));
+        } catch (err) {
+            console.error("Greška pri čitanju fajla:", err);
+            return;
+        }
+
+        console.log(public_inputs)
+        console.log("Pokrecem aes_recursion.sh...");
+        RecProofArtifacts = await backend.generateRecursiveProofArtifacts(
+            { publicInputs: public_inputs, proof: uint8Array },
+            public_inputs.length
+        );
+
+        await backend.destroy();
+        console.log(public_inputs)
+        console.log(RecProofArtifacts)
+        let { stdout: stdout8 } = await execFileAsync('./aes_recursion.sh', [JSON.stringify(RecProofArtifacts), public_inputs, i]);
+        i++;
+        console.log(`Izlaz aes_recursion.sh:\n${stdout8}`);
+
+        data_json = await readResult('./aes_recursion/recursion.json');
+        public_inputs = [data_json.i, ...data_json.return];
+        console.log(public_inputs);
+        //
+        circuit = await getCircuit('aes_recursion');
+        backend = new BarretenbergBackend(circuit, { threads: 8 });
+
+        try {
+            const data = fs.readFileSync('./aes_recursion/proofs/aes_recursion.proof', 'utf8');
+            const chunks = [];
+            const chunkSize = 64;
+            for (let i = 0; i < 16; i++) {
+                const chunk = data.slice(i * chunkSize, (i + 1) * chunkSize);
+                if (chunk.length === chunkSize) {
+                    public_inputs.push(`0x${chunk}`);
+                }
+            }
+
+            const remaining = data.slice(16 * chunkSize);
+            const hexArray = remaining.match(/.{1,2}/g);
+            uint8Array = new Uint8Array(hexArray.map(h => parseInt(h, 16)));
+        } catch (err) {
+            console.error("Greška pri čitanju fajla:", err);
+            return;
+        }
+
+        console.log(public_inputs)
+        console.log("Pokrecem aes_recursion.sh...");
+        RecProofArtifacts = await backend.generateRecursiveProofArtifacts(
+            { publicInputs: public_inputs, proof: uint8Array },
+            public_inputs.length
+        );
+
+        await backend.destroy();
+        console.log(public_inputs)
+        console.log(RecProofArtifacts)
+        let { stdout: stdout9 } = await execFileAsync('./aes_recursion.sh', [JSON.stringify(RecProofArtifacts), public_inputs, i]);
+        i++;
+        console.log(`Izlaz aes_recursion.sh:\n${stdout9}`);
+
+        data_json = await readResult('./aes_recursion/recursion.json');
+        public_inputs = [data_json.i, ...data_json.return];
+        console.log(public_inputs);
+        //kraj
+
+        circuit = await getCircuit('aes_recursion');
+        backend = new BarretenbergBackend(circuit, { threads: 8 });
+
+        try {
+            const data = fs.readFileSync('./aes_recursion/proofs/aes_recursion.proof', 'utf8');
+            const chunks = [];
+            const chunkSize = 64;
+            for (let i = 0; i < 16; i++) {
+                const chunk = data.slice(i * chunkSize, (i + 1) * chunkSize);
+                if (chunk.length === chunkSize) {
+                    public_inputs.push(`0x${chunk}`);
+                }
+            }
+
+            const remaining = data.slice(16 * chunkSize);
+            const hexArray = remaining.match(/.{1,2}/g);
+            uint8Array = new Uint8Array(hexArray.map(h => parseInt(h, 16)));
+        } catch (err) {
+            console.error("Greška pri čitanju fajla:", err);
+            return;
+        }
+
+        console.log(public_inputs)
+        console.log("Pokrecem aes_10_round.sh...");
+        RecProofArtifacts = await backend.generateRecursiveProofArtifacts(
+            { publicInputs: public_inputs, proof: uint8Array },
+            public_inputs.length
+        );
+
+        await backend.destroy();
+        console.log(public_inputs)
+        console.log(RecProofArtifacts)
+        let { stdout: stdout10 } = await execFileAsync('./aes_10_round.sh', [JSON.stringify(RecProofArtifacts), public_inputs, i]);
+        i++;
+        console.log(`Izlaz aes_10_round.sh:\n${stdout10}`);
 
     } catch (error) {
         console.error(`Greška u izvršavanju skripti: ${error.message}`);

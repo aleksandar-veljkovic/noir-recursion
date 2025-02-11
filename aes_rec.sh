@@ -9,8 +9,6 @@ vk_hash=$(echo "$json_string" | jq -r '.vkHash')
 proofAsFields=$(echo "$json_string" | jq -r '.proofAsFields')
 vkAsFields=$(echo "$json_string" | jq -r '.vkAsFields')
 
-#i_p="$3"
-#echo "$i_p"
 key=("0x00","0x01","0x02","0x03","0x04","0x05","0x06","0x07","0x08","0x09","0x0a","0x0b","0x0c","0x0d","0x0e","0x0f")
 
 cd ./aes_prepare

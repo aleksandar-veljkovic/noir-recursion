@@ -11,7 +11,7 @@ vkAsFields=$(echo "$json_string" | jq -r '.vkAsFields')
 
 key=("0x00","0x01","0x02","0x03","0x04","0x05","0x06","0x07","0x08","0x09","0x0a","0x0b","0x0c","0x0d","0x0e","0x0f")
 
-cd ./aes_recursion
+cd ./aes_10_round
 nargo compile
 nargo check
 
@@ -27,12 +27,5 @@ nargo execute
 nargo prove
 nargo verify
 
-i=$(awk -F'= ' '/i =/ {print $2}' Verifier.toml)
-return=$(awk -F'= ' '/return =/ {print $2}' Verifier.toml)
-i=$(echo $i | tr -d '"')
-
-echo "{" > recursion.json
-echo "  \"i\": \"$i\"," >> recursion.json
-echo "  \"return\": $return" >> recursion.json
-echo "}" >> recursion.json
+echo "KRAJ! <3 <3 <3"
 exit 0
