@@ -32,7 +32,7 @@ const main = async () => {
     console.log(rec2PublicInputs);
 
     log('Generating recursive proof 3...')
-    const { proof: rec3Proof, artifacts: rec3Artifacts, publicInputs: rec3PublicInputs} = await generateRecursiveProof(compiledRec3, rec2PublicInputs, rec2Artifacts, { d: 0 });
+    const { proof: rec3Proof, artifacts: rec3Artifacts, publicInputs: rec3PublicInputs} = await generateRecursiveProof(compiledRec2, rec2PublicInputs, rec2Artifacts, { d: 0 });
     log('Recursive proof 3 generated');
     
     console.log(rec3PublicInputs);
