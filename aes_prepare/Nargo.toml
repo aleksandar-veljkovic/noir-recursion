@@ -1,0 +1,7 @@
+[package]
+name = "aes_prepare"
+type = "bin"
+authors = [""]
+
+[dependencies]
+aes = { tag = "v0.4.0", git = "https://github.com/TaceoLabs/noir-aes" }

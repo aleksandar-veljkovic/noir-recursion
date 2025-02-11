@@ -1,6 +1,0 @@
-[package]
-name = "addition_rec_2"
-type = "bin"
-authors = [""]
-
-[dependencies]
